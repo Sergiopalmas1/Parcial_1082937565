@@ -1,21 +1,31 @@
+# Funciones de verificación individuales
+# Cada una comprueba un criterio específico para la contraseña.
+
 def has_min_length(contraseña):
     return len(contraseña) >= 8
+
 
 def has_max_length(contraseña):
     return len(contraseña) <= 20
 
+
 def has_uppercase(contraseña):
     return any(c.isupper() for c in contraseña)
+
 
 def has_lowercase(contraseña):
     return any(c.islower() for c in contraseña)
 
+
 def has_digit(contraseña):
     return any(c.isdigit() for c in contraseña)
+
 
 def has_special(contraseña):
     return any(c in '!@#$%^&*' for c in contraseña)
 
+
+# Función principal de validación
 def validar_contraseña(contraseña):
     return (has_min_length(contraseña) and
             has_max_length(contraseña) and
@@ -24,6 +34,8 @@ def validar_contraseña(contraseña):
             has_digit(contraseña) and
             has_special(contraseña))
 
+
+# Función de ayuda para mostrar qué criterio no se cumple
 def get_missing_criteria(contraseña):
     missing = []
     if not has_min_length(contraseña):
@@ -40,9 +52,12 @@ def get_missing_criteria(contraseña):
         missing.append("Al menos un carácter especial: !@#$%^&*")
     return missing
 
+
 if __name__ == "__main__":
+    # Bucle principal: pide contraseñas hasta que la ingresada sea válida.
     while True:
         contraseña = input("Ingresa una contraseña: ")
+
         if validar_contraseña(contraseña):
             print("Contraseña válida.")
             break

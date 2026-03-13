@@ -1,22 +1,26 @@
 import re
 
 # Función para contar caracteres
+# Devuelve la longitud total del texto, incluidos espacios y signos.
 def contar_caracteres(texto):
     return len(texto)
 
 
 # Función para contar palabras
+# Se basa en separar por espacios para determinar cada palabra.
 def contar_palabras(texto):
     return len(texto.split())
 
 
 # Función para contar oraciones
+# Separa el texto por . ! ? y descarta fragmentos vacíos.
 def contar_oraciones(texto):
     oraciones = re.split(r"[.!?]+", texto)
     return len([o for o in oraciones if o.strip()])
 
 
 # Función para encontrar la palabra más larga
+# Considera palabras separadas por espacios.
 def palabra_mas_larga(texto):
     palabras = texto.split()
 
@@ -27,6 +31,7 @@ def palabra_mas_larga(texto):
 
 
 # Función para encontrar la palabra más corta
+# Devuelve "" en caso de no encontrar palabras.
 def palabra_mas_corta(texto):
     palabras = texto.split()
 
@@ -37,12 +42,14 @@ def palabra_mas_corta(texto):
 
 
 # Función para contar vocales
+# Incluye vocales acentuadas en mayúsculas y minúsculas.
 def contar_vocales(texto):
     vocales = "aeiouáéíóúAEIOUÁÉÍÓÚ"
     return sum(1 for c in texto if c in vocales)
 
 
 # Función para contar consonantes
+# Calcula letras totales y resta las vocales encontradas.
 def contar_consonantes(texto):
     letras = sum(1 for c in texto if c.isalpha())
     vocales = contar_vocales(texto)
@@ -50,6 +57,7 @@ def contar_consonantes(texto):
 
 
 # Función principal
+# Coordina la entrada del usuario y muestra las estadísticas calculadas.
 def main():
 
     # Validar que el texto no esté vacío

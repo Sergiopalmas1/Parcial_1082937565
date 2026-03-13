@@ -1,4 +1,8 @@
+# Funciones de manejo de inventario
+# Cada función realiza una operación específica sobre el diccionario "inventory".
+
 def add_product(inventory, name, qty, price):
+    # Agrega un producto nuevo solo si no existe y si cantidad/precio son positivos.
     if qty <= 0 or price <= 0:
         print("Cantidad y precio deben ser positivos.")
         return False
@@ -9,7 +13,9 @@ def add_product(inventory, name, qty, price):
     print("Producto agregado.")
     return True
 
+
 def view_inventory(inventory):
+    # Muestra todos los productos y calcula el total en pesos.
     if not inventory:
         print("Inventario vacío.")
         return
@@ -22,7 +28,9 @@ def view_inventory(inventory):
         print(f"Producto: {name}, Cantidad: {qty}, Precio: {price}, Total: {total}")
     print(f"Total general: {total_general}")
 
+
 def search_product(inventory, name):
+    # Busca un producto por nombre e imprime sus detalles si existe.
     if name in inventory:
         data = inventory[name]
         qty = data['quantity']
@@ -32,7 +40,9 @@ def search_product(inventory, name):
     else:
         print("Producto no encontrado.")
 
+
 def update_quantity(inventory, name, new_qty):
+    # Actualiza la cantidad de un producto existente.
     if new_qty <= 0:
         print("Cantidad debe ser positiva.")
         return False
@@ -44,7 +54,9 @@ def update_quantity(inventory, name, new_qty):
         print("Producto no encontrado.")
         return False
 
+
 def delete_product(inventory, name):
+    # Elimina un producto del inventario.
     if name in inventory:
         del inventory[name]
         print("Producto eliminado.")
@@ -53,7 +65,9 @@ def delete_product(inventory, name):
         print("Producto no encontrado.")
         return False
 
+
 def main():
+    # Bucle principal del menú: repite hasta que el usuario elija salir.
     inventory = {}
     while True:
         print("\nMenú:")
@@ -91,6 +105,7 @@ def main():
             break
         else:
             print("Opción inválida.")
+
 
 if __name__ == "__main__":
     main()
